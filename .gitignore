@@ -45,3 +45,11 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+*.o
+Unidade 2/build-tratamentoDePoligonos-Desktop_Qt_5_8_0_MinGW_32bit-Debug/.qmake.stash
+*.pro
+Unidade 2/build-tratamentoDePoligonos-Desktop_Qt_5_8_0_MinGW_32bit-Debug/Makefile
+*.Debug
+Unidade 2/build-tratamentoDePoligonos-Desktop_Qt_5_8_0_MinGW_32bit-Debug/Makefile.Release
+*.user
+Unidade 2/tratamentoDePoligonos.zip
