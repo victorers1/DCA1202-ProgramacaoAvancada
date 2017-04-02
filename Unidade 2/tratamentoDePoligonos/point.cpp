@@ -6,7 +6,11 @@
 using namespace std;
 
 Point::Point(){
+    //cout<<"Ponto criado\n";
+}
 
+Point::~Point(){
+    //cout<<"Ponto destruido\n";
 }
 Point::Point(float a, float b){
     x=a; y=b;

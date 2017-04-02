@@ -5,6 +5,7 @@
 class Retangulo: public Poligono {
 public:
     Retangulo();
+    ~Retangulo();
     Retangulo(float x, float y, float largura, float altura);
 
 private:

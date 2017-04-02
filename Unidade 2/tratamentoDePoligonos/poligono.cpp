@@ -1,18 +1,25 @@
 #include <iostream>
+#include <cmath>
 #include "point.h"
 #include "poligono.h"
 
+#define PI 3.14159265
+
 using namespace std;
+
+Poligono::Poligono(){
+    //cout<<"Poligono criado\n";
+}
+
+Poligono::~Poligono(){
+    //cout<<"Poliogono destruído\n";
+}
 
 void Poligono::addVertice(Point p1){
     p[(int)nVert++] = p1;
     cout<<"Criado vetor "<<(int)(nVert-1) << " coordenadas: ";
     p[(int)nVert].imprime();
     cout<<"\n\n";
-}
-
-void Poligono::removeVertice(){
-    nVert--;
 }
 
 int Poligono::getNumVertice(){
@@ -26,7 +33,7 @@ float Poligono::area(){
         soma2 += (p[i].getY() * p[i+1].getX());
     }
 
-    return (soma1 - soma2)/2;
+    return (soma1 - soma2)/2; //média das somas
 }
 
 void Poligono::translada(float a, float b){
@@ -36,14 +43,20 @@ void Poligono::translada(float a, float b){
 }
 
 void Poligono::rotaciona(Point p1, float ang){
+    float c = cos(ang*PI/180.0);
+    float s = sin(ang*PI/180.0);
 
+    for(int i=0; i<nVert; i++){
+        p[i].setX(p1.getX() + (p[i].getX()-p1.getX())*c - (p[i].getY()-p1.getY())*s);
+        p[i].setY(p1.getY() + (p[i].getX()-p1.getX())*c + (p[i].getY()-p1.getY())*s);
+    }
 }
 
 void Poligono::imprimir(){
-    for(int i=0; i<nVert; i++){
+    int i=0;
+    for(i=0; i<nVert-1; i++){
         p[i].imprime();
-        if(i<(nVert-1)){ //não precisa de seta no último elemento
-            cout<<"->";
-        }
+        cout<<" -> ";
     }
+    p[i].imprime();
 }

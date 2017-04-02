@@ -7,6 +7,7 @@ private:
     float y;
 public:
     Point();
+    ~Point();
     Point(float a, float b);
     Point(Point &copia);
     void setX(float mx); //define ovalor da coordenada X

@@ -7,16 +7,21 @@ using namespace std;
 
 int main(){
     //ETAPA 4 - Teste das classes
-    /*Retangulo r(0,0,3,4);
+    Point origem(0,0);
+    Retangulo r(origem.getX(), origem.getY(), 3.0, 4.0);
+    cout<<"Retangulo criado: \n";
+    r.imprimir(); cout<<endl;
+    cout<<"Area de r: "<<r.area()<<"\n";
 
-    cout<<"Antes da translacao: \n";
-    r.imprimir(); cout<<"\n\n";
-
+    r.rotaciona(origem, 90);
+    cout<<"Apos rotacao: \n";
+    r.imprimir(); cout<<endl;
     cout<<"Area de r: "<<r.area()<<"\n";
 
     r.translada(-3,4);
     cout<<"Depois da translacao: ";
     r.imprimir(); cout<<"\n\n";
-    */
+    cout<<"Area de r: "<<r.area()<<"\n";
+
     return 0;
 }
