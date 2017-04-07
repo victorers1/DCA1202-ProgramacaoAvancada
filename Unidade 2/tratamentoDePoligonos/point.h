@@ -9,7 +9,6 @@ public:
     Point();
     ~Point();
     Point(float a, float b);
-    Point(Point &copia);
     void setX(float mx); //define ovalor da coordenada X
     void setY(float my); //define o valor da coordenada Y
     void setXY(float mx, float my); //define, em uma mesma função, valor de X e Y

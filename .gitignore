@@ -45,6 +45,7 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+<<<<<<< HEAD
 *.o
 Unidade 2/build-tratamentoDePoligonos-Desktop_Qt_5_8_0_MinGW_32bit-Debug/.qmake.stash
 *.pro
@@ -54,3 +55,5 @@ Unidade 2/build-tratamentoDePoligonos-Desktop_Qt_5_8_0_MinGW_32bit-Debug/Makefil
 *.user
 Unidade 2/tratamentoDePoligonos.zip
 Unidade 2/build-tratamentoDePoligonos-Desktop_Qt_5_8_0_MinGW_32bit-Debug/debug/tratamentoDePoligonos.exe
+=======
+>>>>>>> parent of 36f147f... Ignorando arquivos Qt

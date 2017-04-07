@@ -21,6 +21,7 @@ int main(){
     cout<<"Area do novo retangulo: "<< ret.area()<< "\n";
     centro = ret.centroide();
     cout<<"Centroide do retangulo: "; centro.imprime(); cout<<endl;
+    //ret.rotaciona(2.0,2.0, 180.0);
     ret.rotaciona(centro, 90);
     cout<<"Rotacionado em torno do centro: "; ret.imprime(); cout<<endl;
     cout<<"Area apos rotacao: "<< ret.area()<<endl;

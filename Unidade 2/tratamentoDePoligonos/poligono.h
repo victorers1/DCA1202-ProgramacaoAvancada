@@ -11,7 +11,8 @@ public:
     int getNumVertice(); // retorna o número de pontos do polígono
     float area(); //calcula a área
     void translada(float a, float b); //move o polígono para o ponto (a,b)
-    void rotaciona(Point p1, float ang); //rotaciona o polígono em "ang" graus em torno do ponto p1
+    void rotaciona(Point eixo, float ang); //rotaciona o polígono em "ang" graus em torno do ponto p1
+    void rotaciona(float xc, float yc, float ang);
     void imprime();
     Point centroide();
 

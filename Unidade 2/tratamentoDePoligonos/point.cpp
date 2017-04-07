@@ -16,11 +16,6 @@ Point::Point(float a, float b){
     x=a; y=b;
 }
 
-Point::Point(Point &copia){
-    x = copia.x;
-    y = copia.y;
-}
-
 void Point::setX(float mx){
     x = mx;
 }
