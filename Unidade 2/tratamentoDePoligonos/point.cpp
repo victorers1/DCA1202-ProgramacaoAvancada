@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cmath>
+#include <iomanip> //fixed, precision()
 #include "point.h"
 
 
@@ -56,5 +57,7 @@ void Point::translada(float a, float b){
 }
 
 void Point::imprime(){
+    cout<<fixed;
+    cout.precision(1);//ajusta quantidade de casas decimais que serão mostradas
     cout<<"("<< x <<", "<< y <<")";
 }

@@ -7,7 +7,7 @@ public:
     Retangulo();
     ~Retangulo();
     Retangulo(float x, float y, float largura, float altura);
-
+    float area();
 private:
     float l, h; //largura e altura
 };

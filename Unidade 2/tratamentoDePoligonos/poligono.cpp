@@ -3,20 +3,22 @@
 #include "point.h"
 #include "poligono.h"
 
-#define PI 3.14159265359
+#define RAD 0.01745329251994329576923690768489 //PI/180.0
+#define PI 3.1415926535897932384626433832795
 using namespace std;
 
 Poligono::Poligono(){
+    p = new Point[100];
     //cout<<"Poligono criado\n";
 }
 
 Poligono::~Poligono(){
+    delete p;
     //cout<<"Poligono destruído\n";
 }
 
 void Poligono::addVertice(Point p1){
     p[nVert++] = p1;
-    cout<<"Criado vertice "<<(nVert-1) << " coordenadas: ";
     p[nVert-1].imprime();
     cout<<"\n\n";
 }
@@ -24,9 +26,6 @@ void Poligono::addVertice(Point p1){
 void Poligono::addVertice(float mx, float my){
     p[nVert].setX(mx);
     p[nVert++].setY(my);
-    cout<<"Criado vertice "<<(nVert-1) << " coordenadas: ";
-    p[nVert-1].imprime();
-    cout<<"\n\n";
 }
 
 int Poligono::getNumVertice(){
@@ -49,14 +48,19 @@ void Poligono::translada(float a, float b){
     }
 }
 
-/*
+/*Fórmula da rotação
 novoX = centroX + (pontoX - centroX) * Math.cos(angulo) - (pontoY - centroY) * Math.sin(angulo);
 novoY = centroY + (pontoX - centroX) * Math.sin(angulo) + (pontoY - centroY) * Math.cos(angulo);
 */
 
+/*
+ * Rotaciona o polígono no sentido:
+ * anti-horário, se angulo >0
+ * horário, se angulo <0
+*/
 void Poligono::rotaciona(Point eixo, float ang){
-    float c = cos(ang*PI/180.0);
-    float s = sin(ang*PI/180.0);
+    float c = cos(ang*PI/(float)180.0);
+    float s = sin(ang*PI/(float)180.0);
     float xPonto ,yPonto, xEixo, yEixo;
 
     for(int i=0; i<nVert; i++){
