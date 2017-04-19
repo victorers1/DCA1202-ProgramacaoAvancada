@@ -6,18 +6,18 @@
 using namespace std;
 
 Retangulo::Retangulo(){
-    delete p;
+    delete [] p;
     p = new Point[4];
     //cout<<"Retangulo criado\n";
 }
 
 Retangulo::~Retangulo(){
-    delete p;
+    delete [] p;
     //cout<<"Retangulo destruído\n";
 }
 
 Retangulo::Retangulo(float x, float y, float largura, float altura){
-    delete p;
+    delete [] p;
     p = new Point[4];
     //cout<<"Retangulo criado\n";
     l = largura;
@@ -28,8 +28,4 @@ Retangulo::Retangulo(float x, float y, float largura, float altura){
     addVertice(x, y-h);
     addVertice(x+l, y-h);
     addVertice(x+l, y);
-}
-
-float Retangulo::area(){
-    return l*h;
 }
