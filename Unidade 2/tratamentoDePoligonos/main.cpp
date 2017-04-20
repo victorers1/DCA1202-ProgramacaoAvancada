@@ -18,7 +18,7 @@ int main(){
     cout<<"Cubo de lado=sqrt(2) criado: ";
     pol.imprime(); cout<<endl;
     cout<<"Area o cubo: " << pol.area() <<endl;
-    cout<<"Cubo apos rotacao horária de 45 graus em torno da origem: \n";
+    cout<<"Cubo apos rotacao horaria de 45 graus em torno da origem: \n";
     pol.rotaciona(origem, -45);
     pol.imprime(); cout<<endl;
     cout<<"Area apos rotacao: " << pol.area() <<endl;
@@ -26,12 +26,12 @@ int main(){
     cout<<"\n\n";
 
     //Teste da classe Retangulo
-    Retangulo ret(origem.getX(), origem.getY(), 4, 4);
+    Retangulo ret(origem.getX(), origem.getY(), 4, 3);
 
     cout<<"Retangulo: "; ret.imprime(); cout<<endl;
     cout<<"Area do retangulo: "<< ret.area() << endl;
     cout<<"Transladando retangulo em x+=0, y+=4 \n";
-    ret.translada(0, 4);
+    ret.translada(-3, 4);
     cout<<"Coordendas do novo retangulo: \n";
     ret.imprime(); cout<<endl;
     cout<<"Area do novo retangulo: "<< ret.area()<< "\n";
@@ -43,6 +43,19 @@ int main(){
     ret.imprime(); cout<<endl;
     cout<<"Area apos rotacao: "<< ret.area()<<endl;
 
-
+    //TESTE SUGERIDO
+    /*
+    Retangulo r(0.0, 0.0, 4.0, 3.0);
+    r.imprime(); cout<<"\n";
+    cout<<"Area: "<< r.area() <<endl;
+    r.translada(-3.0, 4.0);
+    r.imprime(); cout<<endl;
+    cout<<"Area: "<< r.area() <<endl;
+    Point p = r.centroide();
+    cout<<"centroide: "; p.imprime(); cout<<endl;
+    r.rotaciona(p, 30);
+    r.imprime(); cout<<"\n";
+    cout<<"Area: "<< r.area()<<endl;
     return 0;
+    */
 }

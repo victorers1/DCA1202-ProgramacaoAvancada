@@ -13,7 +13,7 @@ Poligono::Poligono(){
 }
 
 Poligono::~Poligono(){
-    delete p;
+    delete [] p;
     //cout<<"Poligono destruído\n";
 }
 
