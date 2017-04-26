@@ -3,7 +3,7 @@
 #include "point.h"
 
 /**
- * @brief A classe Poligono modela um polígono contido no plano cartesino de até 100 vértices.
+ * @brief A classe Poligono modela um polígono de até 100 vértices contido no plano cartesiano
  */
 class Poligono{
 public:
@@ -16,16 +16,16 @@ public:
     /**
      * @brief ~Poligono construtor padrão da classe
      *
-     * No destrutor é feita a liberação da memória alocada para os 100 Points
+     * No destrutor é feita a liberação da memória alocada para os 100 Point
      */
     ~Poligono();
     /**
-     * @brief addVertice guarda valores das coordenadas do ponto p1 no elemento do vetor de Points cujo índice é o número de vertices atual do polígono
+     * @brief addVertice guarda valores das coordenadas do ponto p1 no elemento do vetor de Point cujo índice é o número de vértices atual do polígono
      * @param p1 ponto a ser adicionado no polígono
      */
     void addVertice(Point p1);//insere novo ponto no polígono, assumindo que eles são inseridos em sentido anti-horário
     /**
-     * @brief addVertice guarda valores das coordenadas do ponto p1 no elemento do vetor de Points cujo índice é o número de vertices atual do polígono
+     * @brief addVertice guarda valores das coordenadas do ponto p1 no elemento do vetor de Point cujo índice é o número de vertices atual do polígono
      * @param mx valor x da coordenada
      * @param my valor y da coordenada
      */
@@ -36,12 +36,12 @@ public:
      */
     int getNumVertice(); // retorna o número de pontos do polígono
     /**
-     * @brief area calcula a área do polígono desde que seus pontos estejam ordenados no vetor de Points em sentido anti-horário
+     * @brief area calcula a área do polígono desde que seus pontos estejam ordenados no vetor de Point em sentido anti-horário
      * @return área do polígono
      */
     float area(); //Calcula a área.
     /**
-     * @brief translada move cada vértice para a posição (x+1 y+b)
+     * @brief translada move cada vértice para a posição (x+a y+b)
      * @param a valor a ser adicionado ao x
      * @param b valor a ser adicionado ao y
      */

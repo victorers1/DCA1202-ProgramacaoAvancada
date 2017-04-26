@@ -1,7 +1,7 @@
 #ifndef POINT_H
 #define POINT_H
 /**
- * @brief A classe Point modela um ponto contido no plano cartesiano de duas dimensões
+ * @brief A classe Point modela um ponto contido no plano cartesiano bidimensional
  */
 class Point{
 private:
@@ -27,12 +27,12 @@ public:
      */
     Point(float a, float b);
     /**
-     * @brief setX sobrescreve valor da coordenada x com o passado no argumento
+     * @brief setX sobrescreve valor da coordenada x com o valor passado no argumento
      * @param mx novo valor de x
      */
     void setX(float mx); //define ovalor da coordenada X
     /**
-     * @brief setY sobrescreve valor da coordenada y com o passado no argumento
+     * @brief setY sobrescreve valor da coordenada y com o valor passado no argumento
      * @param my novo valor de y
      */
     void setY(float my); //define o valor da coordenada Y
@@ -54,12 +54,12 @@ public:
     float getY(); //recupera o valor de Y
     /**
      * @brief add soma as coordenadas do ponto com as de outro objeto da classe Point passado como argumento
-     * @param p1 ojeto da classe Point
+     * @param p1 objeto da classe Point
      */
     void add(Point p1); //soma as coordendas deste ponto com as de outro fornecido no argumento
     /**
      * @brief sub sutrai as coordendas do ponto com as de outro objeto da classe Point passado como argumento
-     * @param p1
+     * @param p1 objeto da classe Point
      */
     void sub(Point p1); //subtrai as coordendas deste ponto com outro
     /**
@@ -68,13 +68,13 @@ public:
      */
     float norma(); //calcula distância com a origem
     /**
-     * @brief translada move um ponto (x,y) para o ponto de coordenadas (x+1, y+b)
+     * @brief translada move um ponto (x,y) para o ponto de coordenadas (x+a, y+b)
      * @param a valor a ser adicionado ao x
      * @param b valor a ser adicionado ao y
      */
     void translada(float a, float b); //move o ponto para o X += a e Y += b
     /**
-     * @brief imprime mostra o ponto na saída padrão do programa com a forma: (X,Y)
+     * @brief imprime mostra o ponto na saída padrão do programa com a notação: (X,Y)
      */
     void imprime(); //imprime o ponto na forma (X,Y)
 };

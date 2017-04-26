@@ -12,21 +12,21 @@ public:
     /**
      * @brief Retangulo construtor padrão da classe
      *
-     * O construtor padrão aloca um vetor de 4 Points dinamicamente na memória
+     * O construtor padrão aloca um vetor de 4 Point dinamicamente na memória
      */
     Retangulo();
     /**
      * @brief ~Retagulo destrutor padrão da classe
      *
-     * O destrutor padrão libera da memória o vetor de 4 Points alocado
+     * O destrutor padrão libera da memória o vetor de 4 Point alocado
      */
     ~Retangulo();
     /**
-     * @brief Retangulo declara todos os pontos do retângulo baseado no vértice superior esquerdo, e suas dimensões
+     * @brief Retangulo declara todos os pontos do retângulo baseado no vértice superior esquerdo e as dimensões nos eixos
      * @param x coordenada x do vértice superior esquerdo
      * @param y coordenada y do vértice superior esquerdo
-     * @param largura variação no eixo x de uma aresta a outra
-     * @param altura variação no eixo y de uma aresta a outra
+     * @param largura dimensão horizontal do retângulo declarado
+     * @param altura dimensão vertical do retângulo declarado
      */
     Retangulo(float x, float y, float largura, float altura);
 private:
