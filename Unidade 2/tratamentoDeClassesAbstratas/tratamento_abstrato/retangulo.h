@@ -5,10 +5,8 @@
 
 class Retangulo: public FiguraGeometrica{
 public:
-    Retangulo();
+    Retangulo(int x, int y, int l, int a);
     void draw(Screen &t);
-    void setLA(int l, int a); //define largura e altura
-    void setXY(int x, int y);
     int getX();
     int getY();
     int getL(); //recupera valor da largura

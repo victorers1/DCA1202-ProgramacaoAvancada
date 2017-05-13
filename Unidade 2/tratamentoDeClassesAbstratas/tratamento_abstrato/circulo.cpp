@@ -1,24 +1,18 @@
 #include "circulo.h"
 
-Circulo::Circulo(){
-
+Circulo::Circulo(int x, int y, int r, int p){
+    if(r>=0){
+        this->r = r;
+        this->x = x;
+        this->y = y;
+        preenchimento = p;
+    }else{
+        throw "raio deve ser positivo";
+    }
 }
 
 void Circulo::draw(Screen &t){
 
-}
-
-void Circulo::setXY(int x, int y){
-    this->x = x;
-    this->y = y;
-}
-
-void Circulo::setR(int r){
-    if(r>=0){
-        this->r = r;
-    }else{
-        throw "raio deve ser positivo";
-    }
 }
 
 int Circulo::getX(){

@@ -5,17 +5,17 @@
 
 class Circulo: public FiguraGeometrica{
 public:
-    Circulo();
+    Circulo(int x, int y, int r, int p);
     void draw(Screen &t);
-    void setXY(int x, int y);
-    void setR(int r);
     int getX();
     int getY();
     int getR();
+    int getP();
 
  private:
     int x,y; //centro do círculo
     int r; //raio
+    bool preenchimento;
 };
 
 #endif // CIRCULO_H

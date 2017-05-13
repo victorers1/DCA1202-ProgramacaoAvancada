@@ -32,7 +32,8 @@ public:
   void setBrush(char brush);
 
   // envia a tela para um stream de saida
-  friend ostream& operator<<(ostream &os, Screen &t);
+  friend ostream &operator<<(ostream &os, Screen &t);
 };
+
 
 #endif // SCREEN_H
