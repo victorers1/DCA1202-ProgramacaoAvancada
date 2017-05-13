@@ -1,20 +1,23 @@
 #include "screen.h"
 #include <vector>
 
-Screen::Screen(int nlin, int ncol){
+Screen::Screen(){
+
+}
+
+void Screen::dim(int x, int y){
     int i,j;
     this->nlin = nlin;
     this->ncol = ncol;
-
     //dimencionando mat
-    mat.resize(nlin);
-    for(i=0; i<nlin; i++){
-        mat[i].resize(ncol);
+    mat.resize(x);
+    for(i=0; i<x; i++){
+        mat[i].resize(y);
     }
 
     //preenchimento inicial
-    for(i=0; i<nlin; i++){
-        for(j=0; j<ncol; j++){
+    for(i=0; i<x; i++){
+        for(j=0; j<y; j++){
             mat[i][j] = ' '; //espaços vazios
         }
     }

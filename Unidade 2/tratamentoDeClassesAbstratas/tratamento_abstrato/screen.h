@@ -19,7 +19,10 @@ private:
   vector< vector<char> > mat;
 public:
   // construtor da classe
-  Screen(int nlin, int ncol);
+  Screen();
+
+  //dimensiona a matriz de caracteres
+  void dim(int x, int y);
 
   // desenha um pixel da matriz usando o caratere
   // guardado em 'brush'
