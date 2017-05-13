@@ -16,20 +16,19 @@ int main(void){
     Screen tela;
     char comando[10];
 
-
     int x0,y0, x1,y1, l, a, r; //ponto 0, ponto 1, largura, altura e raio
     bool fillmode; //preenchimento do circulo
     char b; //pincel
-    entra.open("C:/Users/Suporte/Downloads/DCA1202-programacaoAvancada-master/Unidade 2/tratamentoDeClassesAbstratas/tratamento_abstrato/comandos.txt");
+    entra.open("C:/Users/Victor/Desktop/comandos.txt");
     if(!entra.is_open()){
-        cout<<"nao abriu arquivo\n";
+        cout<<"nao abriu arquivo entra\n";
         exit(0);
     }
 
     entra>>comando;
 
 
-    while(entra){ //enquanto a leitura não retornar
+    while(entra.good()){ //enquanto a leitura não retornar
         if(!strcmp("rectangle", comando)){
 
             entra>>x0>>y0>>l>>a;
@@ -42,11 +41,15 @@ int main(void){
             entra>>x0>>y0>>r>>fillmode;
             Circulo cir(x0,y0, r, fillmode);
             cir.draw(tela);
+            cout<<"circulo de raio: "<<r<< " e centro em: ("<< x0 << ", "<<y0<<") e ";
+            fillmode ? cout<<"preenchido" : cout<<"vazio"; cout<<endl;
 
         } else if(!strcmp("line", comando)){
 
             entra>>x0>>y0>>x1>>y1;
             Reta reta(x0,y0,x1,y1);
+            reta.draw(tela);
+            cout<<"reta com P0: ("<<x0<<", "<<y0<<") e P1:("<<x1<<", "<<y1<<")"<<endl;
 
         } else if(!strcmp("brush", comando)){
 
@@ -64,9 +67,9 @@ int main(void){
     }
     entra.close();
 
-    saida.open("C:/Users/Suporte/Downloads/DCA1202-programacaoAvancada-master/Unidade 2/tratamentoDeClassesAbstratas/tratamento_abstrato/desenho.txt");
+    saida.open("C:/Users/Victor/Desktop/desenho.txt");
     if(!saida.is_open()){
-        cout<<"nao abriu arquivo\n";
+        cout<<"nao abriu arquivo saida\n";
         exit(0);
     }
     saida<<tela;

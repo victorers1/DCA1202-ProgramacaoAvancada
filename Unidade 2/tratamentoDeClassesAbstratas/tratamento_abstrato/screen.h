@@ -24,6 +24,9 @@ public:
   //dimensiona a matriz de caracteres
   void dim(int x, int y);
 
+  int getLin(); //recupera número de linhas
+  int getCol(); //recupera número de colunas
+
   // desenha um pixel da matriz usando o caratere
   // guardado em 'brush'
   void setPixel(int x, int y);

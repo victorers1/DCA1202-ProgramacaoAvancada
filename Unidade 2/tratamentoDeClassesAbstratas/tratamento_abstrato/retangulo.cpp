@@ -1,5 +1,7 @@
 #include "retangulo.h"
+#include <iostream>
 
+using namespace std;
 Retangulo::Retangulo(int x, int y, int l, int a){
     if(l>0 && a>0){
         this->l = l;
@@ -7,6 +9,7 @@ Retangulo::Retangulo(int x, int y, int l, int a){
         this->x = x;
         this->y = y;
     }else{
+        cout<<"largura ou altura negativos";
         throw "largura e altura devem ser ambos maior que 0";
     }
 }

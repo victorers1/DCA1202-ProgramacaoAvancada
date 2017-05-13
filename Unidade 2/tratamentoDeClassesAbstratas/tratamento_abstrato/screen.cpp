@@ -7,8 +7,8 @@ Screen::Screen(){
 
 void Screen::dim(int x, int y){
     int i,j;
-    this->nlin = nlin;
-    this->ncol = ncol;
+    this->nlin = x;
+    this->ncol = y;
     //dimencionando mat
     mat.resize(x);
     for(i=0; i<x; i++){
@@ -21,6 +21,14 @@ void Screen::dim(int x, int y){
             mat[i][j] = ' '; //espaços vazios
         }
     }
+}
+
+int Screen::getLin(){
+    return nlin;
+}
+
+int Screen::getCol(){
+    return ncol;
 }
 
 void Screen::setPixel(int x, int y){

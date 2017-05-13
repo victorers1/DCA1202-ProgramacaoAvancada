@@ -15,7 +15,7 @@ public:
  private:
     int x,y; //centro do círculo
     int r; //raio
-    bool preenchimento;
+    bool preenchimento; //fillmode
 };
 
 #endif // CIRCULO_H
