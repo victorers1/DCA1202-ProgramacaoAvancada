@@ -9,7 +9,6 @@ Retangulo::Retangulo(int x, int y, int l, int a){
         this->x = x;
         this->y = y;
     }else{
-        cout<<"largura ou altura negativos";
         throw "largura e altura devem ser ambos maior que 0";
     }
 }

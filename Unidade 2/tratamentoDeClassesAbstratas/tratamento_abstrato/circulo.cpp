@@ -10,7 +10,6 @@ Circulo::Circulo(int x, int y, int r, int p){
         this->y = y;
         preenchimento = p;
     }else{
-        cout<<"raio fornecido e negativo";
         throw "raio deve ser positivo";
     }
 }

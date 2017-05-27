@@ -1,5 +1,8 @@
 dim 50 50
+brush @
+circle 25 25 15 0
 brush *
-rectangle 5 6 30 40
-line 5 5 10 8
-circle 10 10 5 1
+line 0 0 50 50
+brush %
+rectangle 40 40 10 10
+
