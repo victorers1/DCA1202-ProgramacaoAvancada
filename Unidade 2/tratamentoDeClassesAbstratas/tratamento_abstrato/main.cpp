@@ -62,6 +62,10 @@ int main(void){
             entra>>x0>>y0;
             tela.dim(x0,y0);
             cout<<"dimensao: "<<x0<<" "<<y0<<endl;
+        } else if(!strcmp("clear", comando)){
+            tela.clear();
+            cout<<"tela limpa"<<endl;
+
         }
         entra>>comando;
     }
