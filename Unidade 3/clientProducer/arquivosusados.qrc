@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/arquivos/imagens">
+        <file alias="conectar">arquivosusados/connected.png</file>
+        <file alias="desconectar">arquivosusados/disconnected.png</file>
+    </qresource>
+</RCC>
