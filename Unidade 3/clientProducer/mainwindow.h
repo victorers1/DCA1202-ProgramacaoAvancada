@@ -29,7 +29,8 @@ public slots:
 
     //slots do timer
     void setIntervalo();
-    void temporizador();
+    void startTemp();
+    void stopTemp();
 
     //slots variados
     void Sair();
@@ -42,3 +43,4 @@ private:
 };
 
 #endif // MAINWINDOW_H
+

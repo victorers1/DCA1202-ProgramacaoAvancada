@@ -5,22 +5,27 @@
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow){
     ui->setupUi(this);
-
     socket = new QTcpSocket(this);
+
     connect(ui->btnConnect,
             SIGNAL(clicked(bool)),
             this,
             SLOT(tcpCon())); //conectar através do botão
 
+    connect(ui->btnDisconnect,
+            SIGNAL(clicked(bool)),
+            this,
+            SLOT(tcpDiscon())); //desconectar através do botão
+
     connect(ui->btnStart,
             SIGNAL(clicked(bool)),
             this,
-            SLOT(temporizador())); //iniciar temporizador
+            SLOT(startTemp())); //iniciar temporizador
 
     connect(ui->btnStop,
             SIGNAL(clicked(bool)),
             this,
-            SLOT(temporizador())); //pausar temporizador
+            SLOT(stopTemp())); //pausar temporizador
 
     connect(ui->actionSair,
             SIGNAL(triggered(bool)),
@@ -52,16 +57,31 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     //valor do hsliderMax é usado em uma divisão, logo, nunca pode assumir valor 0
 }
 
+void MainWindow::startTemp(){
+    if(socket->waitForConnected(0)) temp->start(ui->hsliderTiming->value()*1000);
+}
+void MainWindow::stopTemp(){
+    temp->stop();
+}
+
 void MainWindow::putData(){
     QDateTime date;
     QString s;
     if(socket->state() == QAbstractSocket::ConnectedState){
+        int min = ui->hsliderMin->value();
+        int max = ui->hsliderMax->value();
+
+        if(max < min){
+            int aux = min;
+            min = max;
+            max = aux;
+        }
         date = QDateTime::currentDateTime();
         s = "set" +
                 date.toString(Qt::ISODate) +
                 " " +
-                QString::number((ui->hsliderMin->value() + qrand())%(1+ ui->hsliderMax->value())) + "\r\n";
-        //gera valores aleatórios dentro do intervalo FECHADO de 0 até o valor exibido no lcdMax
+                QString::number((qrand()%(1+max-min)) + min) + "\r\n";
+        //gera valores aleatórios dentro do intervalo FECHADO de [valor no lcdMin, valor no lcdMax]
     }
 
     dados.append(s); //atualiza string com dados
@@ -92,25 +112,23 @@ void MainWindow::tcpCon(){
     }
 }
 
-void MainWindow::tcpDiscon(){ //TODO
+void MainWindow::tcpDiscon(){
+    socket->disconnectFromHost();
+    if(socket->waitForConnected(3000)){
+        qDebug() << "Connected";
 
+    } else {
+        qDebug() <<"Not connected";
+    }
+    temp->stop();
 }
 
 void MainWindow::setIntervalo(){
     temp->setInterval(ui->hsliderTiming->value()*1000);
 }
 
-void MainWindow::temporizador(){
-    if(estado){
-        temp->stop();
-        estado = !estado;
-    } else{
-        temp->start(ui->hsliderTiming->value()*1000);
-        estado = !estado;
-    }
-}
-
 MainWindow::~MainWindow(){
     delete ui;
     delete socket;
+    delete temp;
 }

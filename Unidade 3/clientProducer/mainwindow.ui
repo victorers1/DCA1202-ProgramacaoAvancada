@@ -165,8 +165,11 @@
           <property name="pageStep">
            <number>1</number>
           </property>
+          <property name="value">
+           <number>1</number>
+          </property>
           <property name="sliderPosition">
-           <number>5</number>
+           <number>1</number>
           </property>
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
