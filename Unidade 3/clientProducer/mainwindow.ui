@@ -115,6 +115,12 @@
        <layout class="QHBoxLayout" name="horizontalLayout_3">
         <item>
          <widget class="QSlider" name="hsliderMax">
+          <property name="minimum">
+           <number>1</number>
+          </property>
+          <property name="sliderPosition">
+           <number>1</number>
+          </property>
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
@@ -157,7 +163,7 @@
            <number>10</number>
           </property>
           <property name="pageStep">
-           <number>10</number>
+           <number>1</number>
           </property>
           <property name="sliderPosition">
            <number>5</number>
@@ -209,6 +215,9 @@
       </property>
       <property name="frameShadow">
        <enum>QFrame::Raised</enum>
+      </property>
+      <property name="sizeAdjustPolicy">
+       <enum>QAbstractScrollArea::AdjustIgnored</enum>
       </property>
       <property name="documentTitle">
        <string>Saída</string>
@@ -277,49 +286,49 @@
  <connections>
   <connection>
    <sender>hsliderMin</sender>
-   <signal>sliderMoved(int)</signal>
+   <signal>valueChanged(int)</signal>
    <receiver>lcdMin</receiver>
    <slot>display(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>156</x>
-     <y>189</y>
+     <x>170</x>
+     <y>199</y>
     </hint>
     <hint type="destinationlabel">
-     <x>235</x>
-     <y>206</y>
+     <x>238</x>
+     <y>212</y>
     </hint>
    </hints>
   </connection>
   <connection>
    <sender>hsliderMax</sender>
-   <signal>sliderMoved(int)</signal>
+   <signal>valueChanged(int)</signal>
    <receiver>lcdMax</receiver>
    <slot>display(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>147</x>
+     <x>161</x>
      <y>272</y>
     </hint>
     <hint type="destinationlabel">
-     <x>242</x>
-     <y>298</y>
+     <x>229</x>
+     <y>300</y>
     </hint>
    </hints>
   </connection>
   <connection>
    <sender>hsliderTiming</sender>
-   <signal>sliderMoved(int)</signal>
+   <signal>valueChanged(int)</signal>
    <receiver>lblTiming</receiver>
    <slot>setNum(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>163</x>
-     <y>354</y>
+     <x>212</x>
+     <y>355</y>
     </hint>
     <hint type="destinationlabel">
      <x>274</x>
-     <y>354</y>
+     <y>363</y>
     </hint>
    </hints>
   </connection>

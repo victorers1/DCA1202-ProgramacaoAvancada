@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QDateTime>
+#include <QScrollBar>
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow){
     ui->setupUi(this);
@@ -41,9 +42,14 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
             this,
             SLOT(putData())); //enviar dados quando o temporizador apitar
 
+    connect(ui->hsliderTiming,
+            SIGNAL(valueChanged(int)),
+            this,
+            SLOT(setIntervalo()));
 
-    ui->lblTiming->setNum(ui->hsliderTiming->value());
-    //temp->start(ui->hsliderTiming->value()*500);
+    ui->lblTiming->setNum(ui->hsliderTiming->value());//faz lblTiming começar no valor correto
+    ui->lcdMax->display(ui->hsliderMax->value()); //faz o lcdMax começar o valor correto
+    //valor do hsliderMax é usado em uma divisão, logo, nunca pode assumir valor 0
 }
 
 void MainWindow::putData(){
@@ -54,16 +60,22 @@ void MainWindow::putData(){
         s = "set" +
                 date.toString(Qt::ISODate) +
                 " " +
-                QString::number((ui->hsliderMin->value() + qrand())%ui->hsliderMax->value()) + "\r\n";
+                QString::number((ui->hsliderMin->value() + qrand())%(1+ ui->hsliderMax->value())) + "\r\n";
+        //gera valores aleatórios dentro do intervalo FECHADO de 0 até o valor exibido no lcdMax
     }
+
+    dados.append(s); //atualiza string com dados
+    ui->txtBoxDados->setText(dados); //imprime tudo novamente no textBrowser
+    QScrollBar *qsb = ui->txtBoxDados->verticalScrollBar(); //declara um ponteiro para a barra de rolagem vertical do textBrowser
+    qsb->setValue(qsb->maximum()); //define seu valor para: máximo que puder
+
+
     qDebug() <<s;
     qDebug()<<socket->write(s.toStdString().c_str()) << " bytes writen";
     if(socket->waitForBytesWritten(3000)){
         qDebug() << "wrote";
     }
 }
-
-void setIntervalo();
 
 void MainWindow::Sair(){
     //desconectar do servidor antes de fechar
@@ -80,7 +92,7 @@ void MainWindow::tcpCon(){
     }
 }
 
-void MainWindow::tcpDiscon(){
+void MainWindow::tcpDiscon(){ //TODO
 
 }
 

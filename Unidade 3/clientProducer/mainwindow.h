@@ -6,6 +6,7 @@
 #include <QTcpSocket>
 #include <QDebug>
 #include <QTimer>
+#include <QString>
 
 namespace Ui {
 class MainWindow;
@@ -37,6 +38,7 @@ private:
     Ui::MainWindow *ui;
     QTcpSocket *socket;
     QTimer *temp = new QTimer(this); //temporizador
+    QString dados;
 };
 
 #endif // MAINWINDOW_H
