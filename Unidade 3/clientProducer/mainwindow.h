@@ -8,6 +8,10 @@
 #include <QTimer>
 #include <QString>
 
+enum idioma{
+    PT, EN
+};
+
 namespace Ui {
 class MainWindow;
 }
@@ -18,8 +22,6 @@ class MainWindow : public QMainWindow{
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
-    bool estado=false; //estado do temporizador (ligado ou desligado)
-
 
 public slots:
     //slots do servidor
@@ -32,14 +34,21 @@ public slots:
     void startTemp();
     void stopTemp();
 
+    //slots do idioma
+    void portug();
+    void english();
+
     //slots variados
+    void clear();
     void Sair();
 
 private:
     Ui::MainWindow *ui;
     QTcpSocket *socket;
     QTimer *temp = new QTimer(this); //temporizador
+    idioma i = PT;
     QString dados;
+    void atualizaDados(QString s);
 };
 
 #endif // MAINWINDOW_H

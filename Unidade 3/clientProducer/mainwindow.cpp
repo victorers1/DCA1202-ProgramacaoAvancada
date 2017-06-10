@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include <QDateTime>
 #include <QScrollBar>
+#include <QString>
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow){
     ui->setupUi(this);
@@ -42,6 +43,19 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
             this,
             SLOT(tcpDiscon())); //desconectar atravás da ação no menu do topo
 
+    connect(ui->actionPortugu_s,
+            SIGNAL(triggered(bool)),
+            this,
+            SLOT(portug()));
+    connect(ui->actionIngl_s,
+            SIGNAL(triggered(bool)),
+            this,
+            SLOT(english()));
+    connect(ui->actionLimpar_dados,
+            SIGNAL(triggered(bool)),
+            this,
+            SLOT(clear()));
+
     connect(temp,
             SIGNAL(timeout()),
             this,
@@ -64,6 +78,37 @@ void MainWindow::stopTemp(){
     temp->stop();
 }
 
+void MainWindow::portug(){
+    i = PT;
+    ui->btnConnect->setText("Conectar");
+    ui->btnDisconnect->setText("Desconectar");
+    ui->btnStart->setText("Começar");
+    ui->btnStop->setText("Parar");
+    ui->leditEndereco->setText("Endereço IP...");
+    ui->actionConectar->setText("Conectar");
+    ui->actionDesconectar->setText("Desconectar");
+    ui->actionSair->setText("Sair");
+    ui->label->setText("Intervalo:");
+}
+
+void MainWindow::english(){
+    i = EN;
+    ui->btnConnect->setText("Connect");
+    ui->btnDisconnect->setText("Disconnect");
+    ui->btnStart->setText("Start");
+    ui->btnStop->setText("Stop");
+    ui->leditEndereco->setText("IP Address...");
+    ui->actionConectar->setText("Connect");
+    ui->actionDesconectar->setText("Disconect");
+    ui->actionSair->setText("Exit");
+    ui->label->setText("Timing:");
+}
+
+void MainWindow::clear(){
+   dados = "";
+   atualizaDados(dados);
+}
+
 void MainWindow::putData(){
     QDateTime date;
     QString s;
@@ -84,11 +129,7 @@ void MainWindow::putData(){
         //gera valores aleatórios dentro do intervalo FECHADO de [valor no lcdMin, valor no lcdMax]
     }
 
-    dados.append(s); //atualiza string com dados
-    ui->txtBoxDados->setText(dados); //imprime tudo novamente no textBrowser
-    QScrollBar *qsb = ui->txtBoxDados->verticalScrollBar(); //declara um ponteiro para a barra de rolagem vertical do textBrowser
-    qsb->setValue(qsb->maximum()); //define seu valor para: máximo que puder
-
+    atualizaDados(s);
 
     qDebug() <<s;
     qDebug()<<socket->write(s.toStdString().c_str()) << " bytes writen";
@@ -97,28 +138,61 @@ void MainWindow::putData(){
     }
 }
 
+
+
+void MainWindow::atualizaDados(QString s){
+    dados.append(s); //atualiza string com dados
+    ui->txtBoxDados->setText(dados); //imprime tudo novamente no textBrowser
+    QScrollBar *qsb = ui->txtBoxDados->verticalScrollBar(); //declara um ponteiro para a barra de rolagem vertical do textBrowser
+    qsb->setValue(qsb->maximum()); //define seu valor para: máximo que puder
+}
+
 void MainWindow::Sair(){
-    //desconectar do servidor antes de fechar
+    tcpDiscon();
     close();
 }
 
 void MainWindow::tcpCon(){
     socket->connectToHost(ui->leditEndereco->text(), 1234);
     if(socket->waitForConnected(3000)){
-        qDebug() << "Connected";
+        if(i == PT){
+            atualizaDados("Conectado\n");
+            qDebug() << "Conectado";
+        } else {
+            atualizaDados("Connected\n");
+            qDebug() << "Connected";
+        }
 
     } else {
-        qDebug() <<"Not connected";
+        if(i == PT){
+            atualizaDados("Não conectado\n");
+            qDebug() << "Não conectado";
+        } else {
+            atualizaDados("Not connected\n");
+            qDebug() <<"Not connected";
+        }
+
     }
 }
 
 void MainWindow::tcpDiscon(){
     socket->disconnectFromHost();
     if(socket->waitForConnected(3000)){
-        qDebug() << "Connected";
-
+        if(i == PT){
+            atualizaDados("Conectado\n");
+            qDebug() << "Conectado";
+        } else {
+            atualizaDados("Connected\n");
+            qDebug() <<"Connected";
+        }
     } else {
-        qDebug() <<"Not connected";
+        if(i == PT){
+            atualizaDados("Desconectado\n");
+            qDebug() << "Desconectado";
+        } else {
+            atualizaDados("Disconnected\n");
+            qDebug() <<"Disconnected";
+        }
     }
     temp->stop();
 }
