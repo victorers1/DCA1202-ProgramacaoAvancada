@@ -74,6 +74,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 void MainWindow::startTemp(){
     if(socket->waitForConnected(0)) temp->start(ui->hsliderTiming->value()*1000);
 }
+
 void MainWindow::stopTemp(){
     temp->stop();
 }
@@ -105,7 +106,7 @@ void MainWindow::english(){
 }
 
 void MainWindow::clear(){
-   dados = "";
+    dados = "";
    atualizaDados(dados);
 }
 
@@ -121,6 +122,7 @@ void MainWindow::putData(){
             min = max;
             max = aux;
         }
+
         date = QDateTime::currentDateTime();
         s = "set" +
                 date.toString(Qt::ISODate) +
@@ -137,8 +139,6 @@ void MainWindow::putData(){
         qDebug() << "wrote";
     }
 }
-
-
 
 void MainWindow::atualizaDados(QString s){
     dados.append(s); //atualiza string com dados
