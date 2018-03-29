@@ -1,12 +1,13 @@
 #ifndef NUMCOMPLEX_H
 #define NUMCOMPLEX_H
 
+#include <iostream>
 #include <sstream>
 #include <math.h>
 #include <exception>
 #include <cctype>
 #include <iomanip>
-
+#define PI 3.14159265359
 using namespace std;
 
 class NumComplex{
