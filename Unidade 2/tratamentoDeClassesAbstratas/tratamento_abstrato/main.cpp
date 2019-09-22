@@ -19,9 +19,9 @@ int main(void){
     int x0,y0, x1,y1, l, a, r; //ponto 0, ponto 1, largura, altura e raio
     bool fillmode; //preenchimento do circulo
     char b; //pincel
-    entra.open("C:/Users/Victor/Desktop/comandos.txt");
+    entra.open("/home/victor/Área de Trabalho/DCA1202-ProgramacaoAvancada/Unidade 2/tratamentoDeClassesAbstratas/tratamento_abstrato/comandos.txt");
     if(!entra.is_open()){
-        cout<<"nao abriu arquivo entra\n";
+        cout<<"Nao abriu comandos.txt\n";
         exit(0);
     }
 
@@ -71,7 +71,7 @@ int main(void){
     }
     entra.close();
 
-    saida.open("C:/Users/Victor/Desktop/desenho.txt");
+    saida.open("/home/victor/Área de Trabalho/DCA1202-ProgramacaoAvancada/Unidade 2/tratamentoDeClassesAbstratas/tratamento_abstrato/desenho.txt");
     if(!saida.is_open()){
         cout<<"nao abriu arquivo saida\n";
         exit(0);

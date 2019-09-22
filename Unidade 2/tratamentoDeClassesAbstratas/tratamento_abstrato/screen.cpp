@@ -59,5 +59,4 @@ ostream &operator<<(ostream &os, Screen &t){
     for(it = t.mat.begin(); it = t.mat.end(); it++){
         os<<*it<<' ';
     }*/
-
 }

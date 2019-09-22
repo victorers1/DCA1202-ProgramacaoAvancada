@@ -3,7 +3,6 @@
 #include <iomanip> //fixed, precision()
 #include "point.h"
 
-
 using namespace std;
 
 Point::Point(){
